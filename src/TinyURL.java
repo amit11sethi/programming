@@ -1,4 +1,3 @@
-package programs;
 
 public class TinyURL {
 	private static final String ALPHABET_MAP = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
