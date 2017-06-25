@@ -1,8 +1,10 @@
 package systemdesign;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
 
 enum ElevatorDirection {
     UP,
@@ -37,8 +39,8 @@ interface RulesManager {
 
 public class ElevatorImpl implements Elevator {
   private Integer currentFloor;
-  private Queue<Integer> destinationFloors;
-
+  private Queue<Integer> destinationFloors = new LinkedList<>();
+  private Stack<Integer> stack = new Stack<>();
   public ElevatorDirection direction() {
     if (destinationFloors.size() > 0){
       if (currentFloor < destinationFloors.peek()){
@@ -46,6 +48,7 @@ public class ElevatorImpl implements Elevator {
       } else if (currentFloor > destinationFloors.peek()) {
         return ElevatorDirection.DOWN;
       }
+      stack.lastElement();
     }
     return ElevatorDirection.HOLD;
   }
