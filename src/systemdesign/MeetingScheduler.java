@@ -45,12 +45,12 @@ public class MeetingScheduler {
 			meetings.add(meeting);
 			return null;
 		} else {
-			int pos = -Collections.binarySearch(meetings, meeting);
-			if (pos > 0) {
-				meetings.add(pos - 1, meeting);
-				return null;
+			int pos = Collections.binarySearch(meetings, meeting);
+			if (pos >= 0) {
+				return meetings.get(pos);	
 			} else {
-				return meetings.get(-pos);
+				meetings.add(-pos-1, meeting);
+				return null;
 			}
 		}
 	}
