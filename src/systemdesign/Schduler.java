@@ -2,6 +2,7 @@ package systemdesign;
 
 import java.util.PriorityQueue;
 import java.util.TimerTask;
+import java.util.TaskQueue;
 
 class Task {
 	state;
@@ -33,8 +34,8 @@ void cancel();
 
 
 class TimerThread extends Thread {
-	PriorityQueue queue;
-	TimeThread(Priority q) this.queue = q;
+	TaskQueue queue;
+	TimeThread(TaskQueue q) this.queue = q;
 	
 	void run() {
 		while (true) {

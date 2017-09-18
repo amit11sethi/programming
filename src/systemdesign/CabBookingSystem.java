@@ -29,8 +29,7 @@ problem
 Map:
 {Graph<Car> free_cars}
 
-update(Booking ) //updates free_cars 
-when booking made,ended or cancelled
+update(Booking ) //updates free_cars when booking made,ended or cancelled
 }
 class RideHelper {
 static findRider(customerLocation) //iterate through points. algorithm is another problem. not diving into it right now as you asked for OOD.
