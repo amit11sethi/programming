@@ -42,8 +42,16 @@ public class ReservationManager {
 				break;
 			}
 		}
+		if(table == null) { // no table is available. It could be based on the capacity. Try generating the suggestion
+			// of table based on ability to join or adjency. Every Table can maintain an adjancy list of tables. Iterate over each 
+			// unreserved table and its adjency list.
+			
+			
+			
+		}
 		if(table != null){
 			Reservation rsv = new Reservation(customerId, table.tableId, reservationTime, otherRequirements);
+			table.addReservedTime(reservationTime);
 			return true;
 		}
 		return false;	
@@ -54,16 +62,21 @@ public class ReservationManager {
 		int tableId;
 		int numberOfSeats;
 		TableType type;
-		
+		Set<LocalDate> reservedTimes;
 		public Table(int id, int number, TableType type){
 			this.tableId = id;
 			this.numberOfSeats = number;
 			this.type = type;
+			this.reservedTimes = new HashSet<>();
 		}
 		
 		public boolean isAvailable(LocalDate reservationTime){
 			// check if this table is available begin from reserve time, the default duration is 1 hour.
+			// 
 			return true;
+		}
+		public void addReservedTime(LocalDate reservedTime) {
+			reservedTimes.add(reservedTime);
 		}
 		
 	}
