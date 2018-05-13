@@ -2,15 +2,18 @@ package concurrency;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Stream;
 
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.util.List;
 import testrule.Repeat;
 import testrule.RepeatRule;
 
@@ -32,6 +35,13 @@ public class ExecutorsTest {
 		final Runnable threadNamePrinter = new InfiniteThreadNamePrinter();
 		System.out.println("Main thread: " + Thread.currentThread().getName());
 		executor.execute(threadNamePrinter);
+	}
+	
+	@Test
+	public void streamExample() {
+		List<Integer> list = (List) Arrays.asList(1,2,3,4,5,6,7,8);
+		Stream<Integer> st = list.stream().filter(i ->  i % 2 == 0);
+		System.out.println(st.count());
 	}
 
 	private static class InfiniteThreadNamePrinter implements Runnable {
